@@ -1,3 +1,5 @@
+'''
+
 tabuleiro = [
       [0,0,0,0,0,0,0,0,0,0],
       [0,0,0,0,0,0,0,0,0,0],
@@ -27,5 +29,25 @@ def define_posicoes(linha, coluna, orient, tam): #recebe linha, coluna, orienta�
         for i in range(tam):
             ocupados.append([linha, coluna + i])
             tabuleiro[linha][coluna + i] += 1
+
+    return ocupados
+
+'''
+
+#OUTRA OPÇÃO - É A QUE VAMOS USAR!!!!!!!!! DEU MUITO TRABALHO
+
+def define_posicoes(linha, coluna, orient, tam): 
+
+    ocupados = [] 
+
+    if orient == 'vertical':
+
+        for i in range(tam):
+            ocupados.append([linha + i, coluna])
+
+    if orient == 'horizontal':
+
+        for i in range(tam):
+            ocupados.append([linha, coluna + i])
 
     return ocupados
