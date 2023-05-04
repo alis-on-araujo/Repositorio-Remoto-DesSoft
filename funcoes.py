@@ -88,3 +88,20 @@ def posiciona_frota(frota):
                 tabuleiro_posiciona[linha][coluna] = 1
 
     return tabuleiro_posiciona
+
+#FUNÇÃO 05 - QUANTAS EMBARCAÇÕES AFUNDADAS
+def afundados(frota, tabuleiro):
+    
+    afundados= 0
+    for valores  in frota.values():
+        for cordenadas in valores:
+            for i , j in cordenadas:
+                if  tabuleiro[i][j]!='X':
+                    break 
+
+            else:
+                afundados+=1
+    
+    
+    
+    return afundados
