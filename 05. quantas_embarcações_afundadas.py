@@ -12,6 +12,6 @@ def afundados(frota, tabuleiro):
                     break 
 
             else:
-                afundados+=1
+                afundados += 1
     
     return afundados
