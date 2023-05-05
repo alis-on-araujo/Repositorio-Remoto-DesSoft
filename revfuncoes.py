@@ -43,17 +43,20 @@
 
 def define_posicoes(linha, coluna, orient, tamanho): 
 
+    linha = int(linha)
+    coluna = int(coluna)
+
     ocupados = [] 
 
     if orient == 'vertical':
 
         for i in range(tamanho):
-            ocupados.append(([int(linha) + i, int(coluna)]))
+            ocupados.append([int(linha + i), int(coluna)])
 
     if orient == 'horizontal':
 
         for i in range(tamanho):
-            ocupados.append([linha, coluna + i])
+            ocupados.append([int(linha), int(coluna + i)])
 
     return ocupados
 
@@ -198,35 +201,31 @@ for embarcacao, quantidade in embarcacoes.items():
 
     for i in range(quantidade):
 
-        print("Insira as informações referentes ao navio {0} que possui tamanho {1}".format(embarcacao, tamanho))
-
         posicao = False
 
         while not posicao:
 
-            linha = input("Linha: ")
-            coluna = input("Coluna: ")
+            
+            print("Insira as informações referentes ao navio {0} que possui tamanho {1}".format(embarcacao, tamanho))
+            linha = int(input("Linha: "))
+            coluna = int(input("Coluna: "))
 
             if embarcacao == "submarino":
                 orient = "vertical"
 
             elif embarcacao != "submarino":
                 orient = input("[1] Vertical [2] Horizontal >")
+                if orient == '1':
+                    orient = 'vertical'
+                elif orient == '2':
+                    orient = 'horizontal'
 
             if posicao_valida(frota, linha, coluna, orient, tamanho):
                 preenche_frota(frota, embarcacao, linha, coluna, orient, tamanho)
                 posicao = True
 
             elif not posicao_valida(frota, linha, coluna, orient, tamanho):
-                while not posicao_valida(frota, linha, coluna, orient, tamanho):
-                    print("Posição inválida, tente novamente.")
-                    linha = input("Linha: ")
-                    coluna = input("Coluna: ")
-
-                    if embarcacao == "submarino":
-                        orient = "vertical"
-
-                    elif embarcacao != "submarino":
-                        orient = input("[1] Vertical [2] Horizontal >")
+                print("Esta posição não está válida!")
+                posicao = False
                         
 print(frota)
