@@ -2,35 +2,19 @@
 
 #FUNÇÃO 01 - DEFINE POSIÇÕES
 
-tabuleiro = [
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-  ]
+def define_posicoes(linha, coluna, orient, tam): 
 
-
-def define_posicoes(linha, coluna, orient, tam): #recebe linha, coluna, orientação e o tamanho
-
-    ocupados = [] #cria lista das posições ocuoadas
+    ocupados = [] 
 
     if orient == 'vertical':
 
         for i in range(tam):
             ocupados.append([linha + i, coluna])
-            tabuleiro[linha + i][coluna] += 1
 
     if orient == 'horizontal':
 
         for i in range(tam):
             ocupados.append([linha, coluna + i])
-            tabuleiro[linha][coluna + i] += 1
 
     return ocupados
 
@@ -44,7 +28,7 @@ def preenche_frota(frota, nome, linha, coluna, orientacao, tamanho):
         frota[nome] = []
 
     posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
-    
+
     frota[nome].append(posicoes)
 
     return frota
@@ -83,8 +67,61 @@ def posiciona_frota(frota):
     ]
 
     for posicoes in frota.values():
+
         for posicao in posicoes:
+
             for linha, coluna in posicao:
+
                 tabuleiro_posiciona[linha][coluna] = 1
 
     return tabuleiro_posiciona
+
+#-----------------------------------------------------------------------------#
+
+#FUNÇÃO 05 - QUANTAS EMBARCAÇÕES AFUNDADAS
+
+def afundados(frota, tabuleiro):
+    
+    afundados= 0
+    
+    for posicoes in frota.values():
+
+        for coordenadas in posicoes:
+
+            for i , j in coordenadas:
+
+                if tabuleiro[i][j] !='X':
+                    break 
+
+            else:
+                afundados += 1
+    
+    return afundados
+
+#-----------------------------------------------------------------------------#
+
+#FUNÇÃO 06 - POSIÇÃO VÁLIDA
+
+def posicao_valida(frota, linha, coluna, orient, tam):
+
+    posicoes = define_posicoes(linha, coluna, orient, tam)
+    maximo = 9
+    minimo = 0
+
+    for posicao in posicoes:
+        
+        x, y = posicao
+
+        if x < minimo or y < minimo or x > maximo or y > maximo:
+            return False
+    
+    for coords in frota.values():
+
+        for coord in coords:
+
+            for x, y in coord:
+
+                if [x, y] in posicoes:
+                    return False
+
+    return True
