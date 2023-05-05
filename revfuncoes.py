@@ -230,4 +230,3 @@ for embarcacao, quantidade in embarcacoes.items():
                         orient = input("[1] Vertical [2] Horizontal >")
                         
 print(frota)
-posiciona_frota(frota)
