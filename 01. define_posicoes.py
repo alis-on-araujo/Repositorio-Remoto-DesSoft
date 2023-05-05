@@ -1,53 +1,27 @@
-'''
+#FUNÇÃO 01 - DEFINE POSIÇÕES
 
-tabuleiro = [
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-  ]
-
-
-def define_posicoes(linha, coluna, orient, tam): #recebe linha, coluna, orientação e o tamanho
-
-    ocupados = [] #cria lista das posições ocuoadas
-
-    if orient == 'vertical':
-
-        for i in range(tam):
-            ocupados.append([linha + i, coluna])
-            tabuleiro[linha + i][coluna] += 1
-
-    if orient == 'horizontal':
-
-        for i in range(tam):
-            ocupados.append([linha, coluna + i])
-            tabuleiro[linha][coluna + i] += 1
-
-    return ocupados
-
-'''
-
-#OUTRA OPÇÃO - É A QUE VAMOS USAR!!!!!!!!! DEU MUITO TRABALHO
-
-def define_posicoes(linha, coluna, orient, tam): 
+def define_posicoes(linha, coluna, orient, tamanho): 
 
     ocupados = [] 
 
     if orient == 'vertical':
 
-        for i in range(tam):
+        for i in range(tamanho):
             ocupados.append([linha + i, coluna])
 
     if orient == 'horizontal':
 
-        for i in range(tam):
+        for i in range(tamanho):
             ocupados.append([linha, coluna + i])
 
     return ocupados
+
+'''
+O QUE ESSA FUNÇÃO RECEBE
+linha = 2
+coluna = 4
+orientacao = "vertical"
+tamanho = 3
+
+print(define_posicoes(linha, coluna, orientacao, tamanho))
+'''
