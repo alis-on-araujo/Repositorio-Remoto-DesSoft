@@ -333,3 +333,7 @@ while jogando:
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
             continua = False
             jogando = False
+
+#-----------------------------------------------------------------------------#
+
+#FUNÇÃO 09 - POSICIONA FROTA
