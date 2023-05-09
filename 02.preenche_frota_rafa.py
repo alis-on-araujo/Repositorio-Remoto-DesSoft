@@ -34,14 +34,27 @@ def define_posicoes(linha, coluna, orient, tam): #recebe linha, coluna, orienta√
 def preenche_frota(frota, embarcacao, linha, coluna, orient, tamanho):
 
     frota = {}
-    resultado=[]
+    
     posicoes = define_posicoes(linha, coluna, orient, tamanho)
-    resultado.append()
+    
     if embarcacao not in frota:
-        resultado.append(posicoes)
-        frota[embarcacao] = resultado
+        frota[embarcacao]=[]
+        if posicoes not in frota[embarcacao]:
+        
+            frota[embarcacao] = posicoes
     else:
 
         frota[embarcacao]+=posicoes
 
     return frota
+
+frota = {
+  "navio-tanque":[
+    [[6,1],[6,2],[6,3]]
+  ]
+}
+nome_navio = 'navio-tanque'
+linha = 4
+coluna = 7
+orientacao = 'vertical'
+tamanho = 3
