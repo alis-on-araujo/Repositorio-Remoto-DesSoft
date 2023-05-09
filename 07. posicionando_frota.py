@@ -1,3 +1,8 @@
+import revfuncoes
+
+from revfuncoes import frota
+from revfuncoes import posicao_valida
+from revfuncoes import preenche_frota
 embarcacoes = {
     "porta-aviões": 1,
     "navio-tanque": 2,
@@ -48,6 +53,5 @@ for embarcacao, quantidade in embarcacoes.items():
                     elif embarcacao != "submarino":
                         orient = input("[1] Vertical [2] Horizontal >")
                         
-print(frota)
-posiciona_frota(frota)
+
 
