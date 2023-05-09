@@ -282,7 +282,7 @@ while jogando:
     while continua == True:
         
         inedito = False
-
+        print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
         while inedito == False:
 
             valido_linha = False
@@ -312,9 +312,9 @@ while jogando:
                     valido_coluna = True
 
             if valido_linha == True and valido_coluna == True:
-                jogadas.append([linha_ataque, coluna_ataque])
+                
 
-                if linha_ataque not in jogadas and coluna_ataque not in jogadas:
+                if [linha_ataque, coluna_ataque] not in jogadas:
                     jogadas.append([linha_ataque, coluna_ataque])
 
                     inedito = True
@@ -329,7 +329,7 @@ while jogando:
 
         tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha_ataque, coluna_ataque)
 
-        if afundados(tabuleiro_oponente, frota_oponente):
+        if afundados(frota_oponente, tabuleiro_oponente):
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
             continua = False
             jogando = False
