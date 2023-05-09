@@ -306,14 +306,15 @@ while jogando:
 
                 if coluna_ataque > 9 or coluna_ataque < 0:
                     print('Coluna inválida!')
-                    valido_linha = False
+                    valido_coluna = False
 
                 else:
-                    valido_linha = True
+                    valido_coluna = True
 
             if valido_linha == True and valido_coluna == True:
+                jogadas.append([linha_ataque, coluna_ataque])
 
-                if jogadas[linha_ataque, coluna_ataque] not in jogadas:
+                if linha_ataque not in jogadas and coluna_ataque not in jogadas:
                     jogadas.append([linha_ataque, coluna_ataque])
 
                     inedito = True
@@ -323,7 +324,7 @@ while jogando:
                 
                 else:
                     print(f'A posição linha {linha_ataque} e coluna {coluna_ataque} já foi informada anteriormente!')
-
+                    jogadas= []
                     inedito = False
 
         tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha_ataque, coluna_ataque)
