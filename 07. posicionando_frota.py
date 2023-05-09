@@ -1,6 +1,3 @@
-import revfuncoes as rf
-from revfuncoes import frota
-
 embarcacoes = {
     "porta-aviões": 1,
     "navio-tanque": 2,
@@ -20,31 +17,37 @@ for embarcacao, quantidade in embarcacoes.items():
 
     for i in range(quantidade):
 
+        print("Insira as informações referentes ao navio {0} que possui tamanho {1}".format(embarcacao, tamanho))
+
         posicao = False
 
         while not posicao:
 
-            
-            print("Insira as informações referentes ao navio {0} que possui tamanho {1}".format(embarcacao, tamanho))
-            linha = int(input("Linha: "))
-            coluna = int(input("Coluna: "))
+            linha = input("Linha: ")
+            coluna = input("Coluna: ")
 
             if embarcacao == "submarino":
                 orient = "vertical"
 
             elif embarcacao != "submarino":
                 orient = input("[1] Vertical [2] Horizontal >")
-                if orient == '1':
-                    orient = 'vertical'
-                elif orient == '2':
-                    orient = 'horizontal'
 
-            if rf.posicao_valida(frota, linha, coluna, orient, tamanho):
-                rf.preenche_frota(frota, embarcacao, linha, coluna, orient, tamanho)
+            if posicao_valida(frota, linha, coluna, orient, tamanho):
+                preenche_frota(frota, embarcacao, linha, coluna, orient, tamanho)
                 posicao = True
 
-            elif not rf.posicao_valida(frota, linha, coluna, orient, tamanho):
-                print("Esta posição não está válida!")
-                posicao = False
+            elif not posicao_valida(frota, linha, coluna, orient, tamanho):
+                while not posicao_valida(frota, linha, coluna, orient, tamanho):
+                    print("Posição inválida, tente novamente.")
+                    linha = input("Linha: ")
+                    coluna = input("Coluna: ")
+
+                    if embarcacao == "submarino":
+                        orient = "vertical"
+
+                    elif embarcacao != "submarino":
+                        orient = input("[1] Vertical [2] Horizontal >")
                         
 print(frota)
+posiciona_frota(frota)
+
