@@ -288,7 +288,7 @@ while jogando:
             valido_linha = False
 
             while valido_linha == False:
-
+                print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
                 linha_ataque = int(input('Jogador, qual linha deseja atacar? '))
 
                 if linha_ataque > 9 or linha_ataque < 0:
@@ -330,9 +330,9 @@ while jogando:
         #print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
 
         tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha_ataque, coluna_ataque)
-        print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
-
-        if afundados(frota_oponente, tabuleiro_oponente):
+        #print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
+        
+        if afundados(frota_oponente, tabuleiro_oponente)== 10:
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
             continua = False
             jogando = False
