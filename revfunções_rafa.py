@@ -301,9 +301,9 @@ while jogando:
             valido_coluna = False
 
             while valido_coluna == False:
-                print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
+                #print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
                 coluna_ataque = int(input('Jogador, qual coluna deseja atacar? '))
-
+                #print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
                 if coluna_ataque > 9 or coluna_ataque < 0:
                     print('Coluna inválida!')
                     valido_coluna = False
@@ -312,7 +312,7 @@ while jogando:
                     valido_coluna = True
 
             if valido_linha == True and valido_coluna == True:
-                jogadas.append([linha_ataque, coluna_ataque])
+                
 
                 if [linha_ataque, coluna_ataque]not in jogadas:
                     jogadas.append([linha_ataque, coluna_ataque])
@@ -324,10 +324,13 @@ while jogando:
                 
                 else:
                     print(f'A posição linha {linha_ataque} e coluna {coluna_ataque} já foi informada anteriormente!')
-                    jogadas= []
+                    
                     inedito = False
 
+        #print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
+
         tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha_ataque, coluna_ataque)
+        print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
 
         if afundados(frota_oponente, tabuleiro_oponente):
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
