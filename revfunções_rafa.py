@@ -282,7 +282,7 @@ while jogando:
     while continua == True:
         
         inedito = False
-        print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
+
         while inedito == False:
 
             valido_linha = False
@@ -301,7 +301,7 @@ while jogando:
             valido_coluna = False
 
             while valido_coluna == False:
-
+                print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
                 coluna_ataque = int(input('Jogador, qual coluna deseja atacar? '))
 
                 if coluna_ataque > 9 or coluna_ataque < 0:
@@ -312,9 +312,9 @@ while jogando:
                     valido_coluna = True
 
             if valido_linha == True and valido_coluna == True:
-                
+                jogadas.append([linha_ataque, coluna_ataque])
 
-                if [linha_ataque, coluna_ataque] not in jogadas:
+                if [linha_ataque, coluna_ataque]not in jogadas:
                     jogadas.append([linha_ataque, coluna_ataque])
 
                     inedito = True
@@ -334,6 +334,3 @@ while jogando:
             continua = False
             jogando = False
 
-#-----------------------------------------------------------------------------#
-
-#FUNÇÃO 09 - POSICIONA FROTA
