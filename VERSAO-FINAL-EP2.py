@@ -1,48 +1,10 @@
-### INFORMAÇÕES
-# linha = onde será posicionada a embarcação
-# coluna = coluna onde será posicionada a embarcação
-# orient = orientação (str)
-# tamanho = tamanho da embarcação
-# embarcacao = nome do navio
-# posicao = [linha][coluna]
-# afundados = quantidade de barcos afundados
+#PASSOU NOS TESTES!!!!!!!!!!!!!!!!!!!!!!!!!
+#Para versão mais bonita checar revfuncoes.py
 
-### RETORNANDO OUTRAS FUNCOES
-# posicoes = define_posicoes(linha, coluna, orient, tamanho)
-
-### LISTAS
-# ocupados = lista com as posições que os navios estão ocupando
-# lista_posicoes = valores do dicionario frota[embarcacao]
-
-### DICIONÁRIOS
-# frota = dicionário com cada navio e as posições que está ocupando
-
-### FUNÇÕES
-
-# define_posicoes(linha, coluna, orient, tamanho)
-    #retorna a posição
-
-# preenche_frota(frota, embarcacao, linha, coluna, orient, tamanho)
-    #retorna o dicionário frota
-
-# faz_jogada(tabuleiro, linha, coluna)
-    #retorna o tabuleiro com x e -
-
-# posiciona_frota(frota)
-    #retorna o tabuleiro com 1 e 0
-
-# afundados(frota, tabuleiro)
-    #retorna a quantidade de navios afundados (afundados)
-
-### TABULEIROS
-# tabuleiro = tabuleiro respondido com x e -
-# tabuleiro_posiciona = tabuleiro com as posições do navio
 
 import random
-random.seed(2)
-#-----------------------------------------------------------------------------#
 
-#FUNÇÃO 01 - DEFINE POSIÇÕES
+#random.seed(2)
 
 def define_posicoes(linha, coluna, orient, tamanho): 
 
@@ -63,11 +25,6 @@ def define_posicoes(linha, coluna, orient, tamanho):
 
     return ocupados
 
-
-#-----------------------------------------------------------------------------#
-
-#FUNÇÃO 02 - PREENCHE FROTA
-
 frota = {}
 
 def preenche_frota(frota, embarcacao, linha, coluna, orient, tamanho):
@@ -81,11 +38,6 @@ def preenche_frota(frota, embarcacao, linha, coluna, orient, tamanho):
 
     return frota
 
-
-#-----------------------------------------------------------------------------#
-
-#FUNÇÃO 03 - FAZ JOGADA
-
 def faz_jogada(tabuleiro, linha, coluna):
 
     if tabuleiro[linha][coluna] == 1:
@@ -96,10 +48,6 @@ def faz_jogada(tabuleiro, linha, coluna):
 
     return tabuleiro
 
-
-#-----------------------------------------------------------------------------#
-
-#FUNÇÃO 04 - POSICIONA FROTA
 
 def posiciona_frota(frota):
 
@@ -127,11 +75,6 @@ def posiciona_frota(frota):
     return tabuleiro_posiciona
 
 
-
-#-----------------------------------------------------------------------------#
-
-#FUNÇÃO 05 - QUANTAS EMBARCAÇÕES AFUNDADAS
-
 def afundados(frota, tabuleiro):
     
     afundados = 0
@@ -150,10 +93,6 @@ def afundados(frota, tabuleiro):
     
     return afundados
 
-
-#-----------------------------------------------------------------------------#
-
-#FUNÇÃO 06 - POSIÇÃO VÁLIDA
 
 def posicao_valida(frota, linha, coluna, orient, tamanho):
 
@@ -179,11 +118,6 @@ def posicao_valida(frota, linha, coluna, orient, tamanho):
                     return False
 
     return True
-
-
-#-----------------------------------------------------------------------------#
-
-#FUNÇÃO 07 - POSICIONANDO FROTA
 
 embarcacoes = {
     "porta-aviões": 1,
@@ -230,12 +164,6 @@ for embarcacao, quantidade in embarcacoes.items():
             elif not posicao_valida(frota, linha, coluna, orient, tamanho):
                 print("Esta posição não está válida!")
                 posicao = False
-                        
-#print(frota)
-
-#-----------------------------------------------------------------------------#
-
-#FUNÇÃO 08 - JOGADAS DO JOGADOR
 
 frota_oponente = {
     'porta-aviões': [
@@ -331,21 +259,13 @@ while jogando:
                     
                     inedito = False
 
-        #print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
-
         tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha_ataque, coluna_ataque)
-        #print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
         
         if afundados(frota_oponente, tabuleiro_oponente) == 10:
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
             continua = False
             jogando = False
         
-
-        #-----------------------------------------------------------------------------#
-
-        #FUNÇÃO 09 - JOGADAS DO OPONENTE
-
         else:
 
             valido_oponente = False
@@ -359,11 +279,7 @@ while jogando:
                         jogadas_oponente.append([linha_oponente, coluna_oponente])
                         print(f'Seu oponente está atacando na linha {linha_oponente} e coluna {coluna_oponente}')
                         valido_oponente = True
-                '''
-                else:
-                    linha_oponente = random.randint(0, 9)
-                    coluna_oponente = random.randint(0, 9)
-                ''' 
+
             tabuleiro_jogador = faz_jogada(tabuleiro_jogador, linha_oponente, coluna_oponente)
 
             if afundados(frota, tabuleiro_jogador) == 10:

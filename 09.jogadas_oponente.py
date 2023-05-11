@@ -1,0 +1,1 @@
+#Por ser baseada em uma condicional, está disponível apenas nos arquivos revfuncoes e VERSAO-FINAL-EP2.
