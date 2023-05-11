@@ -301,9 +301,9 @@ while jogando:
             valido_coluna = False
 
             while valido_coluna == False:
-                #print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
+                
                 coluna_ataque = int(input('Jogador, qual coluna deseja atacar? '))
-                #print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
+
                 if coluna_ataque > 9 or coluna_ataque < 0:
                     print('Coluna inválida!')
                     valido_coluna = False
